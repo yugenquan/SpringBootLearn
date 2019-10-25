@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.mario.springboot.tk.mybatis.mapper.UserMapper">
+    <select id="findUserPage"
+            parameterType="map"
+            resultType="pers.mario.springboot.tk.mybatis.model.User">
+        SELECT * FROM t_user tu WHERE 1 = 1
+        <if test="key != null">
+            AND tu.username LIKE CONCAT('%',#{key,jdbcType=VARCHAR},'%')
+        </if>
+        order by tu.create_time desc
+    </select>
+
+</mapper>
